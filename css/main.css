@@ -1,0 +1,305 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --grey1: #202123;
+    --grey2: #343541;
+    --grey3: #565869;
+    --grey4: #d2d2dd;
+    --grey5: #8e8ea0;
+    --grey6: #40414f;
+    --grey7: #4a4b53;
+}
+body {
+    background-color: var(--grey2);
+    display: flex;
+    color: white;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 10pt;
+}
+/* Estilo genérico */
+svg {
+    width: 15px;
+}
+svg * {
+    fill: white;
+}
+button {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+}
+button:hover {
+    cursor: pointer;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+/* Estilo concreto */
+aside {
+    z-index: 20;
+    background-color: var(--grey1);
+    width: 260px;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0.5rem;
+    transition: transform 0.1s ease-in;
+}
+aside>* {
+    width: 100%;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.buttons button {
+    border: 2px solid var(--grey2);
+    padding: 0.8em;
+    border-radius: 5px;
+}
+.new-chat {
+    width: 79%;
+    text-align: start;
+    vertical-align: middle;
+}
+.new-chat::first-letter {
+    font-size: 1.5em;
+    margin-right: 0.5em;
+}
+.buttons svg *{
+    fill: none;
+}
+.history {
+    border-bottom: 2px solid var(--grey2);
+    height: 82%;
+    overflow-x: auto;
+}
+.history>* {
+    padding: 5%;
+}
+.history .date {
+    color: var(--grey5);
+    padding-top: 5%;
+}
+.history svg *{
+    fill: none;
+}
+.history a {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    border-radius: 5px;
+}
+.history a:hover {
+    background-color: var(--grey2);
+}
+.history svg {
+    margin-right: 4%;
+}
+.upgrade {
+    padding: 4%;
+    margin: 4% 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 10px;
+}
+.upgrade:hover {
+    background-color: var(--grey6);
+}
+.upgrade svg {
+    margin-right: 5%;
+}
+.profile {
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+.profile img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+.profile svg *{
+    stroke: var(--grey5);
+    fill: var(--grey5);
+}
+aside.closed {
+    transform: translateX(-260px);
+    transition: transform 0.1s ease-in;
+}
+.open-aside {
+    /* z-index: -20; */
+    position: fixed;
+    top: 1%;
+    left: 1%;
+    padding: 0.8%;
+    border-radius: 10px;
+}
+.open-aside:hover {
+    background-color: var(--grey6);
+}
+.open-aside svg * {
+    fill: none;
+}
+main {
+    width: 750px;
+    height: 100vh;
+    margin: 0 auto;
+}
+.versions {
+    width: 40%;
+    height: 50px;
+    margin: 3% auto;
+    background-color: var(--grey1);
+    border-radius: 15px;
+    padding: 0.5%;
+    display: flex;
+    justify-content: space-between;
+}
+.version {
+    width: 49%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey5);
+}
+.version.selected {
+    background-color: var(--grey6);
+    color: white;
+}
+.version svg {
+    margin-right: 5%;
+}
+.version svg * {
+    fill: #19c37d;
+}
+.version:last-of-type svg *{
+    fill: #ab68ff;
+}
+.version:not(.selected) svg  * {
+    fill: var(--grey5);
+}
+.chat {
+    height: 63%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: var(--grey3);
+    padding-bottom: 20%;
+}
+.subjestions {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+.subjestion {
+    width: 49%;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--grey3);
+    border-radius: 10px;
+    margin: 0.5%;
+    padding: 1.5%;
+    color: var(--grey5);
+    text-align: start;
+}
+.subjestion:hover {
+    background-color: var(--grey6);
+}
+.subjestion-title {
+    font-weight: bold;
+    color: var(--grey4);
+}
+.subjestion svg {
+    width: 12px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 5%;
+    margin: auto;
+    visibility: hidden;
+}
+.subjestion svg * {
+    fill: var(--grey4);
+}
+.subjestion:hover svg {
+    visibility: visible;
+}
+.user-message {
+    width: 100%;
+    background-color: var(--grey6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    margin: 2% 0;
+    border-radius: 10px;
+}
+.user-message .file-button {
+    margin-right: 1%;
+    padding: 1%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.user-message .file-button:hover {
+    background-color: var(--grey3);
+}
+.user-message .file-button svg {
+    width: 20px;
+}
+.user-message .file-input {
+    display: none;
+}
+.user-message .message-input {
+    background-color: inherit;
+    width: 95%;
+    border: none;
+    color: white;
+}
+.user-message .message-input:focus{
+    outline: none;
+}
+.user-message .message-input::placeholder {
+    color: var(--grey5);
+}
+.user-message button {
+    padding: 1%;
+    border-radius: 5px;
+    display: flex;
+}
+.user-message svg *{
+    fill: var(--grey5);
+}
+.user-message.valid .send {
+    background-color: #19c37d;
+}
+.user-message.valid .send svg * {
+    fill: white;
+}
+.advise {
+    font-size: 12px;
+    text-align: center;
+    color: var(--grey4);
+}
+.help-button {
+    position: fixed;
+    bottom: 2%;
+    right: 1%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--grey7);
+    border: 1px solid var(--grey3);
+    border-radius: 50%;
+}
