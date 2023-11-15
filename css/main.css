@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "soehne";
+    src: url(../font/soehne-buch.woff2);
+}
 *{
     padding: 0;
     margin: 0;
@@ -16,7 +20,7 @@ body {
     background-color: var(--grey2);
     display: flex;
     color: white;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "soehne", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 10pt;
 }
 /* Estilo genérico */
@@ -40,36 +44,52 @@ a {
 }
 /* Estilo concreto */
 aside {
-    z-index: 20;
+    position: relative;
     background-color: var(--grey1);
-    width: 260px;
+    width: 300px;
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 0.5rem;
     transition: transform 0.1s ease-in;
+    z-index: 20;
 }
 aside>* {
     width: 100%;
 }
-.buttons {
+.close-aside-phone {
+    display: none;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 1%;
+    --size: 40px;
+    right: calc(var(--size)*-1);
+    width: var(--size);
+    height: var(--size);
+    font-size: 20px;
+}
+.aside-buttons {
     display: flex;
     justify-content: space-between;
 }
-.buttons button {
+.aside-buttons button, .aside-buttons a {
     border: 2px solid var(--grey2);
     padding: 0.8em;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 .new-chat {
-    width: 79%;
+    /* width: 79%; */
+    flex: 1;
+    margin: 0 3%;
     text-align: start;
     vertical-align: middle;
 }
-.new-chat::first-letter {
+.new-chat span {
     font-size: 1.5em;
     margin-right: 0.5em;
 }
-.buttons svg *{
+.aside-buttons svg *{
     fill: none;
 }
 .history {
@@ -88,6 +108,7 @@ aside>* {
     fill: none;
 }
 .history a {
+    position: relative;
     display: block;
     overflow: hidden;
     width: 100%;
@@ -96,6 +117,17 @@ aside>* {
 }
 .history a:hover {
     background-color: var(--grey2);
+}
+.history a::after {
+    padding: 1px;
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 10%;
+    /* background-color: red; */
+    background: linear-gradient(90deg, rgb(32, 33, 35,0) 0%, rgb(32, 33, 35) 100%);
 }
 .history svg {
     margin-right: 4%;
@@ -132,7 +164,8 @@ aside>* {
 }
 aside.closed {
     transform: translateX(-260px);
-    transition: transform 0.1s ease-in;
+    width: 0;
+    transition: all 0.1s ease-in;
 }
 .open-aside {
     /* z-index: -20; */
@@ -152,6 +185,23 @@ main {
     width: 750px;
     height: 100vh;
     margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: stretch;
+}
+.phone-menu {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--grey3);
+    padding: 0.1% 2%;
+    font-size: 18px;
+}
+.phone-menu svg {
+    width: 20px;
+}
+.new-chat-phone {
+    font-size: 30px;
 }
 .versions {
     width: 40%;
@@ -189,7 +239,9 @@ main {
     fill: var(--grey5);
 }
 .chat {
-    height: 63%;
+    flex: 1;
+    /* height: 60%; */
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -302,4 +354,50 @@ main {
     background-color: var(--grey7);
     border: 1px solid var(--grey3);
     border-radius: 50%;
+}
+.user-interaction {
+    /* background-color: red; */
+}
+@media (max-width: 1023px) {
+    main {
+        width: 100%;
+        margin: auto;
+    }
+    .user-interaction {
+        width: 96%;
+        margin: auto;
+    }
+    .help-button {
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    .open-aside {
+        display: none;
+    }
+    aside {
+        position: absolute;
+    }
+    .close-aside-phone {
+        display: block;
+    }
+    .aside-buttons .close-aside {
+        display: none;
+    }
+    .phone-menu {
+        display: flex;
+    }
+}
+@media (max-width: 639px) {
+    .versions {
+        width: 96%;
+    }
+    .subjestion:nth-child(2n) {
+        display: none;
+    }
+}
+@media (max-width: 531px) {
+    .subjestion {
+        width: 100%;
+    }
 }
