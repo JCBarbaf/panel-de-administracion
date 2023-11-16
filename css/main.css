@@ -124,28 +124,24 @@ aside>* {
 .history a {
     position: relative;
     display: block;
-    overflow: hidden;
     width: 100%;
-    white-space: nowrap;
     border-radius: 5px;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-mask-image: linear-gradient(90deg, white 0%, black 100%);
-    mask-image: linear-gradient(90deg, white 0%, black 100%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* -webkit-background-clip: text;
+    background-clip: text; */
+}
+.history a p {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-mask-image: linear-gradient(90deg, black 80%, transparent 100%);
+    mask-image: linear-gradient(90deg, black 80%, transparent 100%);
 }
 .history a:hover {
-    background-color: var(--grey2);
+    background: var(--grey2);
 }
-/* .history a::after {
-    padding: 1px;
-    position: absolute;
-    content: "";
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 10%;
-    background: linear-gradient(90deg, rgb(32, 33, 35,0) 0%, rgb(32, 33, 35) 100%);
-} */
 .history svg {
     margin-right: 4%;
 }
