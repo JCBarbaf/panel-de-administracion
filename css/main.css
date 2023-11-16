@@ -52,9 +52,10 @@ a {
 *::-webkit-scrollbar-thumb {
     background: var(--grey6);
     border-radius: 10px;
+    height: 20px;
 }
 *::-webkit-scrollbar-thumb:hover {
-background: var(--grey3);
+    background: var(--grey3);
 }
 /* Estilo concreto */
 aside {
