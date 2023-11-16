@@ -17,13 +17,15 @@ function CheckMessage(input) {
     }
 }
 function closeAsideMedia() {
-    console.log("cambio")
     if (window.innerWidth <= 767 && !(document.getElementsByTagName("aside")[0].classList.contains("closed"))) {
         document.getElementsByTagName("aside")[0].classList.add("closed")
+        console.log("cerrar aside")
+    } else if (window.innerWidth > 767 && document.getElementsByTagName("aside")[0].classList.contains("closed")) {
+        document.getElementsByTagName("aside")[0].classList.remove("closed")
         console.log("cerrar aside")
     }
 }
 
 // Verifica el ancho de la pantalla al cargar la página y al cambiar su tamaño
-window.onload = closeAsideMedia();
-window.onresize = closeAsideMedia();
+window.onload = closeAsideMedia;
+window.onresize = closeAsideMedia;
