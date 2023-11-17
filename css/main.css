@@ -130,8 +130,6 @@ aside>* {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    /* -webkit-background-clip: text;
-    background-clip: text; */
 }
 .history a p {
     flex: 1;
